@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+article, aside, footer, header, main, nav, section {
+  display: block;
+}
+
+html, body, h1, h2, h3, h4, ul, li, a, p, 
+article, aside, footer, header, main, nav, section {
+  padding: 0;
+  margin: 0;
+}
+
+.banner {
+  color: white;
+  text-align: center;
+  position:fixed;
+  width:100%;
+  margin-top:-40px;
+}
+
+body {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: url("images/back.jpg");
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  padding-top:20px;
+}
+img {
+   max-width: 100%;
+}
