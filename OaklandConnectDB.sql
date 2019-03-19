@@ -70,6 +70,31 @@ LOCK TABLES `books` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `days`
+--
+
+DROP TABLE IF EXISTS `days`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `days` (
+  `day_ID` int(11) NOT NULL,
+  `dayName` int(11) NOT NULL,
+  PRIMARY KEY (`day_ID`),
+  UNIQUE KEY `days_dayName_uindex` (`dayName`),
+  UNIQUE KEY `days_day_ID_uindex` (`day_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `days`
+--
+
+LOCK TABLES `days` WRITE;
+/*!40000 ALTER TABLE `days` DISABLE KEYS */;
+/*!40000 ALTER TABLE `days` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `posts`
 --
 
@@ -133,6 +158,83 @@ LOCK TABLES `thread` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tutor`
+--
+
+DROP TABLE IF EXISTS `tutor`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `tutor` (
+  `users_ID` int(11) DEFAULT NULL,
+  `tutor_ID` int(11) NOT NULL,
+  PRIMARY KEY (`tutor_ID`),
+  UNIQUE KEY `tutor_users_ID_uindex` (`users_ID`),
+  CONSTRAINT `user_ID_tutor` FOREIGN KEY (`users_ID`) REFERENCES `user` (`user_ID`) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tutor`
+--
+
+LOCK TABLES `tutor` WRITE;
+/*!40000 ALTER TABLE `tutor` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tutor` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tutor_days`
+--
+
+DROP TABLE IF EXISTS `tutor_days`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `tutor_days` (
+  `tutor_ID` int(11) NOT NULL,
+  `days` varchar(12) NOT NULL,
+  PRIMARY KEY (`tutor_ID`),
+  CONSTRAINT `tutor_schedule_tutor_tutor_ID_fk` FOREIGN KEY (`tutor_ID`) REFERENCES `tutor` (`tutor_ID`) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tutor_days`
+--
+
+LOCK TABLES `tutor_days` WRITE;
+/*!40000 ALTER TABLE `tutor_days` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tutor_days` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tutor_time`
+--
+
+DROP TABLE IF EXISTS `tutor_time`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `tutor_time` (
+  `day_ID` int(11) NOT NULL,
+  `user_ID` int(11) NOT NULL,
+  `from` varchar(4) NOT NULL,
+  `to` varchar(4) NOT NULL,
+  PRIMARY KEY (`day_ID`),
+  KEY `tutor_time_user_user_ID_fk` (`user_ID`),
+  CONSTRAINT `tutor_time_days_day_ID_fk` FOREIGN KEY (`day_ID`) REFERENCES `days` (`day_ID`),
+  CONSTRAINT `tutor_time_user_user_ID_fk` FOREIGN KEY (`user_ID`) REFERENCES `user` (`user_ID`) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tutor_time`
+--
+
+LOCK TABLES `tutor_time` WRITE;
+/*!40000 ALTER TABLE `tutor_time` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tutor_time` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `user`
 --
 
@@ -166,4 +268,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-19 15:05:07
+-- Dump completed on 2019-03-19 17:38:16
