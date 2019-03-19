@@ -30,3 +30,8 @@ body {
 img {
    max-width: 100%;
 }
+
+li.focus {
+  background-color: blue;
+  color: blue;
+}

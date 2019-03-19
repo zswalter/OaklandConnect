@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-{% extends 'index.html' %}
+{% extends 'base.html' %}
 
 {% block content %}
+{% if user.is_authenticated %}
 <body>
 
         <div class="row">
@@ -34,6 +35,9 @@
         
     </div>
 </body>
+{% else %}
+<p>You are not logged in</p>
+{% endif %}
 {% endblock %}
 
 </html>

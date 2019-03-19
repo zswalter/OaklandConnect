@@ -120,5 +120,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # Authentication Redirects
-LOGIN_REDIRECT_URL = 'login.html'
+LOGIN_REDIRECT_URL = 'index'
+LOGOUT_REDIRECT_URL = 'login'
 

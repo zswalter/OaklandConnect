@@ -1,38 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-{% load static %}
+{% block title %}Home{% endblock %}
 
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-</head>
-
-<body>
-    <div class="container">
-        <div class="jumbotron">
-            <h1>Oakland Connect</h1>
-            <p>Services for a better learning experience!</p>
-        </div>
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <ul class="nav nav-pills">
-                        <li role="presentation" class="active"><a href="{% url 'login' %}">Home</a></li>
-                        <li role="presentation" class="nav-tabs"><a href="{% url 'forum' %}">Forum</a></li>
-                        <li role="presentation" class="nav-tabs"><a href="{% url 'tutors' %}">Tutors</a></li>
-                        <li role="presentation" class="nav-tabs"><a href="{% url 'books' %}">Books</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-       
-	<!-- container -->
-	{% block content %}
-	{% endblock %}
-</body>
-
-</html>
+{% block content %}
+{% if user.is_authenticated %}
+<meta http-equiv="refresh" content=".000001;URL='{% url 'forum' %}'"></a>
+  <p>You are logged in.</p>
+  <a href="{% url 'logout' %}">logout</a>
+{% else %}
+  <p>You are not logged in.</p>
+{% endif %}
+{% endblock %}

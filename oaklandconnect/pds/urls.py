@@ -20,8 +20,8 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-	path('', TemplateView.as_view(template_name='login.html'), name='login'),
-	path('index/', TemplateView.as_view(template_name='index.html'), name='index'),
+	path('accounts/', include('django.contrib.auth.urls')),
+	path('', TemplateView.as_view(template_name='index.html'), name='index'),
 	path('books/', TemplateView.as_view(template_name='books.html'), name='books'),
 	path('forum/', TemplateView.as_view(template_name='forum.html'), name='forum'),
 	path('tutors/', TemplateView.as_view(template_name='tutors.html'), name='tutors'),
