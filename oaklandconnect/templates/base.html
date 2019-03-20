@@ -6,26 +6,26 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
 
-<body>
+<body style="background-color: black">
     <div class="container">
-        <div class="jumbotron">
-            <h1>Oakland Connect</h1>
+        <div class="jumbotron" style="background-color: #8e774d">
+            <h1 style="color: white">Oakland Connect</h1>
             <p>Services for a better learning experience!</p>
         </div>
-        <nav class="navbar navbar-default">
+        <nav class="navbar navbar-default" style="background-color: black; border-color: black">
             <div class="container-fluid">
-                <div class="navbar-header">
-                    <ul class="nav nav-pills">
-                        <li class="active"><a href="{% url 'login' %}" class="nav-tabs">Login</a></li>
-                        <li class="active"><a href="{% url 'forum' %}" class="nav-tabs">Forum</a></li>
-                        <li class="active"><a href="{% url 'tutors' %}" class="nav-tabs">Tutors</a></li>
-                        <li class="active"><a href="{% url 'books' %}" class="nav-tabs">Books</a></li>
-						<li class="active"><a href="{% url 'logout' %}" class="nav-tabs">Logout</a></li>
+                <div class="navbar-header" >
+                    <ul class="nav nav-pills" >
+                        <li class="active" ><a href="{% url 'login' %}" class="nav-tabs" style="background-color: #8e774d" >Login</a></li>
+                        <li class="active"><a href="{% url 'forum' %}" class="nav-tabs" style="background-color: #8e774d">Forum</a></li>
+                        <li class="active"><a href="{% url 'tutors' %}" class="nav-tabs" style="background-color: #8e774d">Tutors</a></li>
+                        <li class="active"><a href="{% url 'books' %}" class="nav-tabs" style="background-color: #8e774d">Books</a></li>
+						<li class="active"><a href="{% url 'logout' %}" class="nav-tabs" style="background-color: #8e774d">Logout</a></li>
                     </ul>
                 </div>
             </div>
