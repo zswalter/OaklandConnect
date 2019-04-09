@@ -134,63 +134,34 @@
 
 {% block content %}
     {% if user.is_authenticated %}
-        <div class="row">
+         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-primary">
                     <div class="panel-heading" style="background-color: #8e774d">
-                        <h3 class="panel-title">------Forum------ </h3>
-                    </div>
-                    <div class="panel-body">
-                        <span class="post"><button onclick="document.getElementById('id01').style.display='block'"
-                                                   style="width:auto;">New Thread</button></span>
-                        <div id="id01" class="modal">
-
-                            <form class="modal-content animate" action="success.html">
-
-
-                                <div class="container">
-                                    <label for="title"><b>Title</b></label>
-                                    <input type="text" placeholder="Whats on your mind?" name="title" required>
-
-                                    <label for="pos"><b>Body</b></label>
-                                    <input type="text" placeholder="Give us some details!" name="post" required>
-
-                                    <button type="submit">Post</button>
-                                </div>
-                                <div class="container" style="background-color:#f1f1f1">
-                                    <button type="button" onclick="document.getElementById('id01').style.display='none'"
-                                            class="cancelbtn">Cancel
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-
-                        <script>
-                            // Get the modal
-                            var modal = document.getElementById('id01');
-                            // When the user clicks anywhere outside of the modal, close it
-                            window.onclick = function (event) {
-                                if (event.target == modal) {
-                                    modal.style.display = "none";
-                                }
-                            }
-                        </script>
-
-
+                        <h3 class="panel-title">------Forum------</h3>
+                      </div>
+                      <div class="panel-body">
+                        {% for post in posts %}
                         <div class="well">
-
-                            <h3>Help with Calculus</h3>
-                            <br>
-                            <p>How do you do a derivative?</p>
+                              <h3>{{ post.title }}</h3>
+                              <br>
                             <div class="well">
-                                <p>It's Easy!</p>
+                                {{ post.body }}
                             </div>
-                        </div>
-                    </div>
+
+                             <p>{{ post.author }}
+                                 </br>
+                                 {{ post.published_date }}
+                             </p>
+                         </div>
+                          {% empty %}
+                          {% endfor %}
+                      </div>
                 </div>
             </div>
         </div>
-        </div>
+
+    </div>
         </body>
     {% else %}
         <p style="color: #8e774d">You are not logged in</p>

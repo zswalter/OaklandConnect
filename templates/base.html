@@ -5,7 +5,6 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
@@ -22,7 +21,7 @@
                         {% block navbar %}
                              {% if user.is_authenticated %}
 
-                                    <li class="active"><a href="{% url 'forum' %}" class="nav-tabs" style="background-color: #8e774d">Forum</a></li>
+                                    <li class="active"><a href="{% url 'forum_list' %}" class="nav-tabs" style="background-color: #8e774d">Forum</a></li>
                                     <li class="active"><a href="{% url 'tutors' %}" class="nav-tabs" style="background-color: #8e774d">Tutors</a></li>
                                     <li class="active"><a href="{% url 'books' %}" class="nav-tabs" style="background-color: #8e774d">Books</a></li>
                                     <li class="active"><a href="{%  url 'logout' %}" class="nav-tabs" style="background-color: #8e774d">Logout</a></li>

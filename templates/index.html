@@ -5,7 +5,7 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-<meta http-equiv="refresh" content=".000001;URL='{% url 'forum' %}'"></a>
+<meta http-equiv="refresh" content=".000001;URL='{% url 'forum_list' %}'"></a>
   <p>You are logged in.</p>
   <a href="{% url 'logout' %}">logout</a>
 {% else %}
