@@ -159,7 +159,7 @@
                                  {{ post.published_date }}
                                  </p>
                             </div>
-                            <h4 style="text-align:center">Comments</h4>
+                            <h4 style="text-align:center">Comments: {{ post.comments.count }}</h4>
                             <div style="background-color:white" class="well">
                              {% for comment in post.comments.all %}
                                 {{ comment.body }}
