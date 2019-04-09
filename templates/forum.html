@@ -159,7 +159,7 @@
                                  {{ post.published_date }}
                                  </p>
                             </div>
-                            <h4 style="text-align:center">Comments <button style="width: auto"><a style="color: black" href="{% url 'post_comment' pk=post.pk %}">Add Comment</a> </button></h4>
+                            <h4 style="text-align:center">Comments</h4>
                             <div style="background-color:white" class="well">
                              {% for comment in post.comments.all %}
                                 {{ comment.body }}
@@ -174,7 +174,9 @@
                                  <p>No Comments!</p>
                                  {% endfor %}
                             </div>
-
+                        <div style="text-align: center">
+                            <button style="width: auto"><a style="color: black" href = "{% url 'post_comment' pk=post.pk %}">Add Comment</a> </button>
+                        </div>
                          </div>
                           {% empty %}
                           {% endfor %}
