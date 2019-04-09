@@ -7,34 +7,17 @@
             font-family: Arial, Helvetica, sans-serif;
         }
         /* Full-width input fields */
-        input[name=btitle] {
+        input[name=title] {
             width: 100%;
             padding: 12px 20px;
             margin: 8px 0;
             display: inline-block;
             border: 1px solid #ccc;
             box-sizing: border-box;
-            margin-top: auto;
         }
-        input[name=edition] {
-            width: 10%;
-            padding: 10px 10px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-        }
-        input[name=subject] {
-            width: 20%;
-            padding: 10px 10px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-        }
-        input[name=price] {
-            width: 10%;
-            padding: 10px 10px;
+        input[name=post] {
+            width: 100%;
+            padding: 32px 20px;
             margin: 8px 0;
             display: inline-block;
             border: 1px solid #ccc;
@@ -146,80 +129,53 @@
     </style>
 </head>
 {% extends 'base.html' %}
+
+<body>
+
 {% block content %}
     {% if user.is_authenticated %}
-        <div class="row">
+         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-primary">
                     <div class="panel-heading" style="background-color: #8e774d">
                         <h3 class="panel-title">------Books------</h3>
-                    </div>
-                    <div class="panel-body">
-
-<span class="post"><button onclick="document.getElementById('id01').style.display='block'"
-                                                   style="width:auto;">List a book</button></span>
-                        <div id="id01" class="modal">
-
-                            <form class="modal-content animate" action="success.html">
-
-
-                                <div class="container">
-                                    <label for="btitle"><b>Book Title</b></label>
-                                    <input type="text" placeholder="Title" name="btitle" required>
-
-                                    <label for="subject"><b>Subject</b></label>
-                                    <input type="text" placeholder="math" name="subject" required>
-
-                                    <label for="edition"><b>Edition</b></label>
-                                    <input type="text" placeholder="1st" name="edition" required>
-
-                                    <label for="price"><b>Price</b></label>
-                                    <input type="text" placeholder="50" name="price" required>
-
-                                    <label for="condition"><b>What is the condition?</b></label>
-                                    <input type="radio" name="cond" value="4"> Like New<br>
-                                    <input type="radio" name="cond" value="3"> Good<br>
-                                    <input type="radio" name="cond" value="2"> Average<br>
-                                    <input type="radio" name="cond" value="1"> Not Good<br>
-
-                                    <button type="submit">Post</button>
-                                </div>
-                                <div class="container" style="background-color:#f1f1f1">
-                                    <button type="button" onclick="document.getElementById('id01').style.display='none'"
-                                            class="cancelbtn">Cancel
-                                    </button>
-                                </div>
-                            </form>
+                      </div>
+                        <br>
+                        <div style="text-align: center">
+                        <button style="width:auto; position: center"><a style="color: black" href="{% url 'book_new' %}">
+                            List Book</a></button>
                         </div>
-
-                        <script>
-                            // Get the modal
-                            var modal = document.getElementById('id01');
-                            // When the user clicks anywhere outside of the modal, close it
-                            window.onclick = function (event) {
-                                if (event.target == modal) {
-                                    modal.style.display = "none";
-                                }
-                            }
-                        </script>
-
+                      <div class="panel-body">
+                        {% for book in books %}
                         <div class="well">
-                            <h3>Unix Power Tools</h3>
-                            <br>
-                            <p>$50.00</p>
-                        </div>
-                        <div class="well">
-                            <h3>Python in a Nutshell</h3>
-                            <br>
-                            <p>$30.00</p>
-                        </div>
-                    </div>
+                              <h3>{{ book.title }}</h3>
+                              <br>
+                            <div style="background-color:white" class="well">
+                                {{ book.author }}
+                                <br>
+                                {{ book.subject }}
+                                <br>
+                                {{ book.price }}
+                                <br>
+                                <br>
+                                 <p style="text-align: right">{{ book.user }}
+                                 </br>
+                                 {{ book.published_date }}
+                                 </p>
+                            </div>
+                         </div>
+                          {% empty %}
+                          {% endfor %}
+                      </div>
                 </div>
             </div>
         </div>
-        </div>
+
+    </div>
         </body>
     {% else %}
         <p style="color: #8e774d">You are not logged in</p>
     {% endif %}
 {% endblock %}
+
+</html>
