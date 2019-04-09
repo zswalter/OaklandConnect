@@ -1,14 +1,16 @@
 from django.shortcuts import render
 from .models import Post
-from .forms import CreatePost
+from .forms import CreatePost, CreateComment
 from django.utils import timezone
 from django.views import generic
 from .forms import CreatePost
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
+from .models import Comment
 # Create your views here.
 def forum_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    comments = Comment.objects.filter(created_on__lte=timezone.now()).order_by('created_on')
     return render(request, 'forum.html', {'posts': posts})
 
 def post_new(request):
@@ -23,3 +25,16 @@ def post_new(request):
     else:
         form = CreatePost()
         return render(request, 'postForm.html', {'form': form})
+
+def post_comment(request):
+    if request.method == "POST":
+        form = CreateComment(request.POST)
+        if form.is_valid():
+            comments = form.save(commit=False)
+            comments.author = request.user
+            comments.created_on = timezone.now()
+            comments.save()
+            return redirect('forum_list')
+    else:
+        form = CreateComment()
+        return render(request, 'commentForm.html.html', {'form': form})

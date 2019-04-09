@@ -150,14 +150,31 @@
                         <div class="well">
                               <h3>{{ post.title }}</h3>
                               <br>
-                            <div class="well">
+                            <div style="background-color:white" class="well">
                                 {{ post.body }}
-                            </div>
-
-                             <p>{{ post.author }}
+                                <br>
+                                <br>
+                                 <p style="text-align: right">{{ post.author }}
                                  </br>
                                  {{ post.published_date }}
-                             </p>
+                                 </p>
+                            </div>
+                            <h4 style="text-align:center">Comments</h4>
+                            <div style="background-color:white" class="well">
+                             {% for comment in post.comments.all %}
+                                {{ comment.body }}
+                                <BR>
+                                 <br>
+                                 <p style="text-align: right">
+                                {{ comment.author }}
+                                 <br>
+                                {{ comment.created_on }}
+                                 </p>
+                                 {% empty %}
+                                 <p>No Comments!</p>
+                                 {% endfor %}
+                            </div>
+
                          </div>
                           {% empty %}
                           {% endfor %}
