@@ -140,12 +140,11 @@
                     <div class="panel-heading" style="background-color: #8e774d">
                         <h3 class="panel-title">------Forum------</h3>
                       </div>
-                        <span class="post">
-                        <button style="width:auto;"><a href="{% url 'post_new' %}">
-                            New Thread
-                            </a>
-                        </button>
-                    </span>
+                        <br>
+                        <div style="text-align: center">
+                        <button style="width:auto; position: center"><a style="color: black" href="{% url 'post_new' %}">
+                            New Thread</a></button>
+                        </div>
                       <div class="panel-body">
                         {% for post in posts %}
                         <div class="well">
