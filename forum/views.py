@@ -3,9 +3,9 @@ from .models import Post
 from .forms import CreatePost, CreateComment
 from django.utils import timezone
 from django.views import generic
-from .forms import CreatePost
+from .forms import CreatePost, CreateComment
 from django.urls import reverse_lazy
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
 from .models import Comment
 # Create your views here.
 def forum_list(request):
@@ -26,15 +26,18 @@ def post_new(request):
         form = CreatePost()
         return render(request, 'postForm.html', {'form': form})
 
-def post_comment(request):
+def post_comment(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+
     if request.method == "POST":
         form = CreateComment(request.POST)
         if form.is_valid():
             comments = form.save(commit=False)
             comments.author = request.user
             comments.created_on = timezone.now()
+            comments.post = post
             comments.save()
             return redirect('forum_list')
     else:
         form = CreateComment()
-        return render(request, 'commentForm.html.html', {'form': form})
+    return render(request, 'commentForm.html', {'form': form})
