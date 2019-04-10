@@ -20,11 +20,19 @@
                     <ul class="nav nav-pills" >
                         {% block navbar %}
                              {% if user.is_authenticated %}
-
+                                 {% if user.is_student %}
                                     <li class="active"><a href="{% url 'forum_list' %}" class="nav-tabs" style="background-color: #8e774d">Forum</a></li>
-                                    <li class="active"><a href="{% url 'tutors' %}" class="nav-tabs" style="background-color: #8e774d">Tutors</a></li>
+                                     <li class="active"><a href="{% url 'tutors' %}" class="nav-tabs" style="background-color: #8e774d">Tutors</a></li>
                                     <li class="active"><a href="{% url 'books' %}" class="nav-tabs" style="background-color: #8e774d">Books</a></li>
+                                     <li class="active"><a href="{%  url 'logout' %}" class="nav-tabs" style="background-color: #8e774d">Logout</a></li>
+                                 {% elif user.is_tutor %}
+                                     <li class="active"><a href="{% url 'forum_list' %}" class="nav-tabs" style="background-color: #8e774d">Forum</a></li>
+                                    <li class="active"><a href="{% url 'tutors' %}" class="nav-tabs" style="background-color: #8e774d">Tutors</a></li>
                                     <li class="active"><a href="{%  url 'logout' %}" class="nav-tabs" style="background-color: #8e774d">Logout</a></li>
+                                 {% elif user.is_professor %}
+                                     <li class="active"><a href="{% url 'forum_list' %}" class="nav-tabs" style="background-color: #8e774d">Forum</a></li>
+                                    <li class="active"><a href="{%  url 'logout' %}" class="nav-tabs" style="background-color: #8e774d">Logout</a></li>
+                                 {% endif %}
                             {% else %}
                                     <li class="active" ><a href="{% url 'login' %}" class="nav-tabs" style="background-color: #8e774d" >Login</a></li>
                                     <li class="active"><a href="{%  url 'signup' %}" class="nav-tabs" style="background-color: #8e774d">Sign Up</a></li>
