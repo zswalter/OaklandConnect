@@ -163,6 +163,7 @@
                                  {{ book.published_date }}
                                  </p>
                             </div>
+                        <button style="width:auto; position: center"><a style="color: black" href="{% url 'book_delete' pk=book.pk %}">Delete Listing</a></button>
                          </div>
                           {% empty %}
                           {% endfor %}

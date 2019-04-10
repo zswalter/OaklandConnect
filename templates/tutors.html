@@ -145,16 +145,21 @@
                         <div style="text-align: center">
 
                         <button style="width:auto; position: center"><a style="color: black" href="{% url 'tutor_new' %}">
-                            List Book</a></button>
+                            Post Schedule</a></button>
                         </div>
                             <br>
-                            {% for tutor in tutors %}
+                            <div class="panel-body">
+                        {% for tutor in tutors %}
                         <div class="well">
 
                             <table class="table table-stripped">
                                 <thead>
                                 <tr>
-                                    <th colspan="6" scope="col" style="text-align: center">Tutor: {{ tutor.user }}    Email: <a href="mailto:{{ tutor.user.email }}">{{ tutor.user.email }}</a> </th>
+                                    <th colspan="6" scope="col" style="text-align: center">Tutor: {{ tutor.user }}
+                                        <br>
+                                        Email: <a href="mailto:{{ tutor.user.email }}">{{ tutor.user.email }}</a>
+                                        <br>
+                                        Subject: {{ tutor.subject }} </th>
                                 </tr>
                                 <tr>
                                     <th scope="col">
@@ -220,10 +225,13 @@
                                 </tr>
                                 </tbody>
                             </table>
+                            <button style="width:auto; position: center"><a style="color: black" href="{% url 'tutor_edit' pk=tutor.pk %}">Edit Schedule</a></button>
+                            <button style="width:auto; position: center"><a style="color: black" href="{% url 'tutor_delete' pk=tutor.pk %}">Delete Schedule</a></button>
+                        </div>
+                            {% empty %}
+                          {% endfor %}
                             </div>
 
-                          {% empty %}
-                          {% endfor %}
                          {% elif user.is_student %}
                       <div class="panel-body">
                         {% for tutor in tutors %}
@@ -232,7 +240,11 @@
                             <table class="table table-stripped">
                                 <thead>
                                 <tr>
-                                    <th colspan="6" scope="col" style="text-align: center">Tutor: {{ tutor.user }}    Email: <a href="mailto:{{ tutor.user.email }}">{{ tutor.user.email }}</a> </th>
+                                    <th colspan="6" scope="col" style="text-align: center">Tutor: {{ tutor.user }}
+                                        <br>
+                                        Email: <a href="mailto:{{ tutor.user.email }}">{{ tutor.user.email }}</a>
+                                        <br>
+                                        Subject: {{ tutor.subject }} </th>
                                 </tr>
                                 <tr>
                                     <th scope="col">

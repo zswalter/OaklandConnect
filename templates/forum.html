@@ -169,6 +169,7 @@
                                 {{ comment.author }}
                                  <br>
                                 {{ comment.created_on }}
+                                 <button style="width:auto; position: center"><a style="color: black" href="{% url 'comment_delete' pk=comment.pk %}">Delete Comment</a></button>
                                  </p>
                                  {% empty %}
                                  <p>No Comments!</p>
@@ -177,6 +178,7 @@
                         <div style="text-align: center">
                             <button style="width: auto"><a style="color: black" href = "{% url 'post_comment' pk=post.pk %}">Add Comment</a> </button>
                         </div>
+                        <button style="width:auto; position: center"><a style="color: black" href="{% url 'post_delete' pk=post.pk %}">Delete Post</a></button>
                          </div>
                           {% empty %}
                           {% endfor %}

@@ -9,7 +9,7 @@ from django.shortcuts import redirect, get_object_or_404
 from .models import Comment
 # Create your views here.
 def forum_list(request):
-    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    posts = Post.objects.filter(published_date__lt=timezone.now()).order_by('-published_date')
     comments = Comment.objects.filter(created_on__lte=timezone.now()).order_by('created_on')
     return render(request, 'forum.html', {'posts': posts})
 
@@ -26,6 +26,14 @@ def post_new(request):
         form = CreatePost()
         return render(request, 'postForm.html', {'form': form})
 
+def post_delete(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    if request.user == post.author:
+        post.delete()
+        return redirect('forum_list')
+    else:
+        return redirect('forum_list')
+
 def post_comment(request, pk):
     post = get_object_or_404(Post, pk=pk)
 
@@ -41,3 +49,11 @@ def post_comment(request, pk):
     else:
         form = CreateComment()
     return render(request, 'commentForm.html', {'form': form})
+
+def comment_delete(request, pk):
+    comment = get_object_or_404(Comment, pk=pk)
+    if request.user == comment.author:
+        comment.delete()
+        return redirect('forum_list')
+    else:
+        return redirect('forum_list')

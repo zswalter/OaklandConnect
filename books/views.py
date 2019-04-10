@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from .models import Books
 from django.utils import timezone
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
 from .forms import CreateBook
 # Create your views here.
 def book_list(request):
-    books = Books.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    books = Books.objects.filter(published_date__lt=timezone.now()).order_by('-published_date')
     return render(request, 'books.html', {'books': books})
 
 def book_new(request):
@@ -20,3 +20,10 @@ def book_new(request):
     else:
         form = CreateBook()
         return render(request, 'postBook.html', {'form': form})
+def book_delete(request, pk):
+    book = get_object_or_404(Books, pk=pk)
+    if request.user == book.user:
+        book.delete()
+        return redirect('book_list')
+    else:
+        return redirect('book_list')
