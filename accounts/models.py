@@ -4,32 +4,32 @@ from django.conf import settings
 # Create your models here.
 class CustomUser(AbstractUser):
     USER_TYPE_CHOICES = (
-        (1, 'student'),
-        (2, 'tutor'),
-        (3, 'professor'),
+        ('Student', 'Student'),
+        ('Tutor', 'Tutor'),
+        ('Professor', 'Professor'),
     )
 
-    user_type = models.PositiveSmallIntegerField(choices=USER_TYPE_CHOICES)
+    user_type = models.CharField(max_length=100, choices=USER_TYPE_CHOICES, null=True)
 
     def __str__(self):
         return self.username
     def is_student(self):
         user = self
-        if user.user_type == 1:
+        if user.user_type == 'Student':
             return True
         else:
             return False
 
     def is_tutor(self):
         user = self
-        if user.user_type == 2:
+        if user.user_type == 'Tutor':
             return True
         else:
             return False
 
     def is_professor(self):
         user = self
-        if user.user_type == 3:
+        if user.user_type == 'Professor':
             return True
         else:
             return False

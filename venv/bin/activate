@@ -1,76 +1,32 @@
-# This file must be used with "source bin/activate" *from bash*
-# you cannot run it directly
+Script started on 2019-04-10 11:23:48-0400
+]0;zach@ZachVivoBook: /mnt/d/oaklandconnect[01;32mzach@ZachVivoBook[00m:[01;34m/mnt/d/oaklandconnect[00m$ python3 -m venv venv[Kpython3 -m venv venv[Kpython3 -m venv venv[Kpython3 -m venv venv[10Pdeactivate[2Pepip3 list[1Pdeactiveate[2Peate
+deactivate: command not found
+]0;zach@ZachVivoBook: /mnt/d/oaklandconnect[01;32mzach@ZachVivoBook[00m:[01;34m/mnt/d/oaklandconnect[00m$ deactivatepython3 -m venv venv[10Pdeactivate[2Pepip3 listinstall djangolist[K[1Pdeactiveatepython3 -m venv venv[10Pdeactivate[Ksource r[Kb[Kvenv/bin/activate
+]0;zach@ZachVivoBook: /mnt/d/oaklandconnect[01;32mzach@ZachVivoBook[00m:[01;34m/mnt/d/oaklandconnect[00m$ source venv/bin/activate
+]0;zach@ZachVivoBook: /mnt/d/oaklandconnect[01;32mzach@ZachVivoBook[00m:[01;34m/mnt/d/oaklandconnect[00m$ source venv/bin/activate
+]0;zach@ZachVivoBook: /mnt/d/oaklandconnect[01;32mzach@ZachVivoBook[00m:[01;34m/mnt/d/oaklandconnect[00m$ source venv/bin/activate[K[K[K[K[K[K[K[K[K[K[K[K[K\/
+bin/        include/    lib/        pyvenv.cfg  share/      
+]0;zach@ZachVivoBook: /mnt/d/oaklandconnect[01;32mzach@ZachVivoBook[00m:[01;34m/mnt/d/oaklandconnect[00m$ source venv/
+bin/        include/    lib/        pyvenv.cfg  share/      
+]0;zach@ZachVivoBook: /mnt/d/oaklandconnect[01;32mzach@ZachVivoBook[00m:[01;34m/mnt/d/oaklandconnect[00m$ source venv/bin/
+bash: source: venv/bin/: is a directory
+]0;zach@ZachVivoBook: /mnt/d/oaklandconnect[01;32mzach@ZachVivoBook[00m:[01;34m/mnt/d/oaklandconnect[00m$ source venv/bin/activate
+]0;zach@ZachVivoBook: /mnt/d/oaklandconnect[01;32mzach@ZachVivoBook[00m:[01;34m/mnt/d/oaklandconnect[00m$ de[K[Ksource venv/bin/activate[Kactivate[14Pdeactivatepython3 -m venv venv[10Pdeactivate
+deactivate: command not found
+]0;zach@ZachVivoBook: /mnt/d/oaklandconnect[01;32mzach@ZachVivoBook[00m:[01;34m/mnt/d/oaklandconnect[00m$ ^C
+]0;zach@ZachVivoBook: /mnt/d/oaklandconnect[01;32mzach@ZachVivoBook[00m:[01;34m/mnt/d/oaklandconnect[00m$ quit
 
-deactivate () {
-    # reset old environment variables
-    if [ -n "${_OLD_VIRTUAL_PATH:-}" ] ; then
-        PATH="${_OLD_VIRTUAL_PATH:-}"
-        export PATH
-        unset _OLD_VIRTUAL_PATH
-    fi
-    if [ -n "${_OLD_VIRTUAL_PYTHONHOME:-}" ] ; then
-        PYTHONHOME="${_OLD_VIRTUAL_PYTHONHOME:-}"
-        export PYTHONHOME
-        unset _OLD_VIRTUAL_PYTHONHOME
-    fi
+Command 'quit' not found, did you mean:
 
-    # This should detect bash and zsh, which have a hash command that must
-    # be called to get it to forget past commands.  Without forgetting
-    # past commands the $PATH changes we made may not be respected
-    if [ -n "${BASH:-}" -o -n "${ZSH_VERSION:-}" ] ; then
-        hash -r
-    fi
+  command 'quiz' from deb bsdgames
+  command 'luit' from deb x11-utils
+  command 'quilt' from deb quilt
+  command 'quot' from deb quota
+  command 'qgit' from deb qgit
 
-    if [ -n "${_OLD_VIRTUAL_PS1:-}" ] ; then
-        PS1="${_OLD_VIRTUAL_PS1:-}"
-        export PS1
-        unset _OLD_VIRTUAL_PS1
-    fi
+Try: sudo apt install <deb name>
 
-    unset VIRTUAL_ENV
-    if [ ! "$1" = "nondestructive" ] ; then
-    # Self destruct!
-        unset -f deactivate
-    fi
-}
+]0;zach@ZachVivoBook: /mnt/d/oaklandconnect[01;32mzach@ZachVivoBook[00m:[01;34m/mnt/d/oaklandconnect[00m$ exit
+exit
 
-# unset irrelevant variables
-deactivate nondestructive
-
-VIRTUAL_ENV="/mnt/d/oaklandconnect/venv"
-export VIRTUAL_ENV
-
-_OLD_VIRTUAL_PATH="$PATH"
-PATH="$VIRTUAL_ENV/bin:$PATH"
-export PATH
-
-# unset PYTHONHOME if set
-# this will fail if PYTHONHOME is set to the empty string (which is bad anyway)
-# could use `if (set -u; : $PYTHONHOME) ;` in bash
-if [ -n "${PYTHONHOME:-}" ] ; then
-    _OLD_VIRTUAL_PYTHONHOME="${PYTHONHOME:-}"
-    unset PYTHONHOME
-fi
-
-if [ -z "${VIRTUAL_ENV_DISABLE_PROMPT:-}" ] ; then
-    _OLD_VIRTUAL_PS1="${PS1:-}"
-    if [ "x(venv) " != x ] ; then
-	PS1="(venv) ${PS1:-}"
-    else
-    if [ "`basename \"$VIRTUAL_ENV\"`" = "__" ] ; then
-        # special case for Aspen magic directories
-        # see http://www.zetadev.com/software/aspen/
-        PS1="[`basename \`dirname \"$VIRTUAL_ENV\"\``] $PS1"
-    else
-        PS1="(`basename \"$VIRTUAL_ENV\"`)$PS1"
-    fi
-    fi
-    export PS1
-fi
-
-# This should detect bash and zsh, which have a hash command that must
-# be called to get it to forget past commands.  Without forgetting
-# past commands the $PATH changes we made may not be respected
-if [ -n "${BASH:-}" -o -n "${ZSH_VERSION:-}" ] ; then
-    hash -r
-fi
+Script done on 2019-04-10 11:26:08-0400

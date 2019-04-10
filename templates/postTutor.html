@@ -5,14 +5,86 @@
 {% block content %}
      <div class="row">
             <div class="col-md-12" >
-                <div class="panel panel-primary" >
+                <div class="panel panel-primary" style="border-color: #8e774d" >
                     <div class="panel-heading" style="background-color: #8e774d">
                         <h3 class="panel-title" style="text-align: center" >------New Schedule------</h3>
                       </div>
                       <div class="panel-body" >
                         <form method= "POST" class="post-form">{% csrf_token %}
-                            {{ form.as_p }}
-                          <button type="submit" class="save btn btn-default">Submit</button>
+                            <div class="well">
+
+                            <table class="table table-stripped">
+                                <thead>
+                                <tr>
+                                    <th colspan="6" scope="col" style="text-align: center">Subject: {{ form.subject }} </th>
+                                </tr>
+                                <tr>
+                                    <th scope="col">
+                                        Day
+                                    </th>
+                                    <th scope="col">
+                                        Monday
+                                    </th>
+                                    <th scope="col">
+                                        Tuesday
+                                    </th>
+                                    <th scope="col">
+                                        Wednesday
+                                    </th>
+                                    <th scope="col">
+                                        Thursday
+                                    </th>
+                                    <th scope="col">
+                                        Friday
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <th scope="row">
+                                        Start Time:
+                                    </th>
+                                    <td>
+                                        {{ form.mon_start }}
+                                    </td>
+                                    <td>
+                                        {{ form.tue_start }}
+                                    </td>
+                                    <td>
+                                        {{ form.wed_start }}
+                                    </td>
+                                    <td>
+                                        {{ form.thur_start }}
+                                    </td>
+                                    <td>
+                                        {{ form.fri_start }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        End Time:
+                                    </th>
+                                    <td>
+                                        {{ form.mon_end }}
+                                    </td>
+                                    <td>
+                                        {{ form.tue_end }}
+                                    </td>
+                                    <td>
+                                        {{ form.wed_end }}
+                                    </td>
+                                    <td>
+                                        {{ form.thur_end }}
+                                    </td>
+                                    <td>
+                                        {{ form.fri_end }}
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                                <button style="width:auto; position: center; background-color: #8e774d; color: black; border-color: #8e774d" type="submit" class="save btn btn-primary">Submit</button>
+                        </div>
+
                         </form>
                       </div>
                 </div>
