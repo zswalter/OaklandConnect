@@ -26,6 +26,7 @@ urlpatterns = [
     path('', TemplateView.as_view(template_name='index.html'), name='index'),
     path('forum/', include('forum.urls')),
     path('books/', include('books.urls')),
+    path('tutors/', include('tutor.urls')),
     path('tutors/', TemplateView.as_view(template_name='tutors.html'), name='tutors'),
     path('books/', TemplateView.as_view(template_name='books.html'), name='books'),
 
